@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block body %}
+    <div class="p-4">
+        <h2 class="text-center">Sign In</h2>
+        <form action="{% url 'basicapp:signin' %}" method="post">
+            {% csrf_token %}
+            <div class="mt-4">
+                <label for="username" class="form-label">Username</label>
+                <input class='form-control' type="text" name="username" id="username">
+            </div>
+
+            <div class="mt-4">
+                <label for="pword" class="form-label">Password</label>
+                <input class='form-control' type="password" name="pword" id="pword">
+            </div>
+
+            <div class="mt-2">
+                <input type="checkbox" name="show" id="show_pwd">
+                <label for="show" class="form-label">Show Password</label>
+            </div>
+
+        </form>
+        <div class="mt-5 text-center">
+            <button class="btn btn-lg btn-primary text-center" id="login-btn">
+                <span class="spinner-border spinner-border-sm visually-hidden" aria-hidden="true" id="spinners"></span>
+                <span role="status"  id="btn-text">Log In</span>
+            </button>
+        </div>
+    </div>
+
+    
+{% endblock %}

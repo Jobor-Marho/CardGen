@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Print Recharge Cards
+{% endblock %}
+
+{% block body %}
+<div class="p-4">
+    <h2 class="text-center">Print Recharge Card</h2>
+    <form action="{% url 'basicapp:print' epin='true' %}" method="post">
+        {% csrf_token %}
+        <div class="mt-4">
+            <label for="file" class="form-label">Enter Epin File</label>
+            <input class='form-control' type="text" name="file" id="file">
+        </div>
+
+        <div class="mt-4">
+            <label for="network" class="form-label">Select Network</label>
+            <select name="network" id="network" class="form-control">
+                <option id='selected' selected value="*">--Choose a network--</option>
+                <option value="mtn">MTN</option>
+                <option value="glo">GLO</option>
+                <option value="airtel">AIRTEL</option>
+                <option value="9mobile">9MOBILE</option>
+            </select>
+        </div>
+
+        <div class="mt-4">
+            <label for="amount" class="form-label">Amount</label>
+            <input class='form-control' type="text" name="amount" id="amount">
+        </div>
+
+        <div class="mt-5 text-center">
+            <button class="btn btn-lg btn-primary text-center">Print</button>
+        </div>
+
+    </form>
+</div>
+{% endblock %}

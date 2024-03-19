@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Build Epins
+{% endblock %}
+
+{% block body %}
+<div class="p-4">
+    <h2 class="text-center">Build Epin</h2>
+    <form action="{% url 'basicapp:buildepin' %}" method="post">
+        {% csrf_token %}
+        <div class="mt-4">
+            <label for="epin" class="form-label">Enter Pin Message</label>
+            <input class='form-control' type="text" name="pin" id="epin">
+        </div>
+
+        <div class="mt-4">
+            <label for="network" class="form-label">Select Network</label>
+            <select name="network" id="network" class="form-control">
+                <option id='selected' selected value="*">--Choose a network--</option>
+                <option value="mtn">MTN</option>
+                <option value="glo">GLO</option>
+                <option value="airtel">AIRTEL</option>
+                <option value="9mobile">9MOBILE</option>
+            </select>
+        </div>
+
+        <div class="mt-4">
+            <label for="amount" class="form-label">Amount</label>
+            <input class='form-control' type="text" name="amount" id="amount">
+        </div>
+
+        <div class="mt-5 text-center">
+            <button class="btn btn-lg btn-primary text-center" type="submit">Generate</button>
+        </div>
+
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Validation
+{% endblock %}
+
+{% block body %}
+<div class="p-4">
+    <h2 class="text-center">Authorization</h2>
+    <form action="{% url 'basicapp:verifyauth' %}" method="post">
+        {% csrf_token %}
+        <div class="mt-4">
+            <label for="auth" class="form-label">Enter your Auth Code</label>
+            <input class='form-control'  name="auth" id="auth" maxlength="8">
+        </div>
+
+    </form>
+    <div class="mt-5 text-center">
+        <button class="btn btn-lg btn-primary text-center" id="validate-btn">
+            <span class="spinner-border spinner-border-sm visually-hidden" aria-hidden="true" id="spinners"></span>
+            <span role="status"  id="btn-text">Validate</span>
+        </button>
+    </div>
+</div>   
+    {% block script %}
+        <script>
+            // Restricts input for the given textbox to the given inputFilter function.
+            function setInputFilter(textbox, inputFilter, errMsg) {
+                [ "input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop", "focusout" ].forEach(function(event) {
+                textbox.addEventListener(event, function(e) {
+                    if (inputFilter(this.value)) {
+                    // Accepted value.
+                    if ([ "keydown", "mousedown", "focusout" ].indexOf(e.type) >= 0){
+                        this.setCustomValidity("");
+                    }
+            
+                    this.oldValue = this.value;
+                    this.oldSelectionStart = this.selectionStart;
+                    this.oldSelectionEnd = this.selectionEnd;
+                    }
+                    else if (this.hasOwnProperty("oldValue")) {
+                    // Rejected value: restore the previous one.
+                    this.setCustomValidity(errMsg);
+                    this.reportValidity();
+                    this.value = this.oldValue;
+                    this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                    }
+                    else {
+                    // Rejected value: nothing to restore.
+                    this.value = "";
+                    }
+                });
+                });
+            }
+
+            setInputFilter(document.getElementById("auth"), function(value) {
+                return /^[0-9]+$/.test(value); // Allow digits and '.' only, using a RegExp.
+            }, "Only digits are allowed");
+                </script>
+    {% endblock %}
+{% endblock %}
