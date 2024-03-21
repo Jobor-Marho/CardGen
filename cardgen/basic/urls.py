@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.home, name='index'),
     path('auth/', views.verifyAuth, name='verifyauth'),
     path('build/', views.buidEpin, name='buildepin'),
+    path('changepassword/', views.changePassword, name='changePassword'),
     path('format/', views.formatCard, name='format'),
     path('print/<str:epin>', views.printCard, name='print'),
     path('login/', views.signIn, name='signin'),

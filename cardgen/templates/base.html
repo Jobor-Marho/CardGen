@@ -44,11 +44,17 @@
                       <a class="nav-link p-3 bg-white" href="{% url 'basicapp:print' epin='false' %}"><i class="bi bi-printer-fill"></i> Print Recharge Card</a>
                     </li>
                     <li class="nav-item">
+                      <a class="nav-link p-3 bg-white" href="{% url 'basicapp:changePassword' %}"><i class="bi bi-pencil"></i> Change Password</a>
+                    </li>
+                    <li class="nav-item">
                       <a class="nav-link p-3 bg-white" href="{% url 'basicapp:signout' %}"><i class="bi bi-box-arrow-left text-danger"></i> Logout</a>
                     </li>
                   {% else %}
                     <li class="nav-item">
                       <a class="nav-link p-3 bg-white" href="{% url 'basicapp:verifyauth' %}"><i class="bi bi-patch-check-fill"></i> Verify</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link p-3 bg-white" href="{% url 'basicapp:changePassword' %}"><i class="bi bi-pencil"></i> Change Password</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link p-3 bg-white" href="{% url 'basicapp:signout' %}"><i class="bi bi-box-arrow-left text-danger"></i> Logout</a>
@@ -69,13 +75,17 @@
         {% if messages %}
             {% for message in messages %}
                 {% if message.tags == 'error' %}
-                    <div class="message text-center alert alert-danger {{ message.tags }}" id="error">
-                        <i class="bi bi-exclamation-triangle-fill"></i> {{ message }}
+
+                    <div class="message text-center alert alert-danger {{ message.tags }} alert-dismissible fade show" role="alert" id="error">
+                        <strong><i class="bi bi-exclamation-triangle-fill"></i> {{ message }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 {% else %}
-                    <div class="message text-center alert alert-success {{ message.tags }}">
-                      <i class="bi bi-check-circle-fill"></i> {{ message }}
+                    <div class="message text-center alert alert-success {{ message.tags }} alert-dismissible fade show" role="alert">
+                      <strong><i class="bi bi-check-circle-fill"></i> {{ message }}</strong>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
+                    
                 {% endif %}
             {% endfor %}
         {% endif %}
@@ -87,6 +97,15 @@
             {% block body %}
             {% endblock %}
         </div>
+    </section>
+
+    <section id="footer">
+      <div class="admin border rounded p-2 shadow">
+        <a href="https://wa.link/z37bf2">
+          <i class="bi bi-whatsapp text-success h1 d-block"></i>
+          <span>Contact Admin</span>
+        </a>
+      </div>
     </section>
 
     

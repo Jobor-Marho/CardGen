@@ -122,11 +122,36 @@ def buidEpin(request):
     return render(request, 'build.html', {'current_user': current_user})
 
 @login_required
+def changePassword(request):
+    current_user = get_user(request)
+    current_user = NewUserModel.objects.get(username=current_user.username)
+    if not current_user.is_verified:
+        messages.error(request, 'Oops. You haven\'t verified your account yet. Please Enter a Valid Auth Key to Continue.')
+        return redirect('basicapp:verifyauth')
+    else:
+        if request.method == 'POST':
+            oldpwd = str(request.POST.get('oldpwd'))
+            if check_password(oldpwd, current_user.password):
+                newpwd = str(request.POST.get('pword'))
+                current_user.password = make_password(newpwd)
+                current_user.save()
+                messages.success(request, 'Your Password has Been Changed Successfuly. Please Login.')
+                logout(request)
+                return JsonResponse({'status': 'success'},)
+            else:
+                return JsonResponse({'status': 'error', 'msg': 'Incorrect Password. Please Try Again.'})
+        return render(request, 'change.html', {'current_user': current_user})
+    
+
+
+
+
+@login_required
 def formatCard(request):
     current_user = get_user(request)
     current_user = NewUserModel.objects.get(username=current_user.username)
     if not current_user.is_verified:
-        messages.error(request, 'Oops. You has\'nt verified your account yet. Please Enter a Valid Auth Key to Continue.')
+        messages.error(request, 'Oops. You haven\'t verified your account yet. Please Enter a Valid Auth Key to Continue.')
         return redirect('basicapp:verifyauth')
     else:
         return render(request, 'format.html', {'current_user': current_user})
@@ -136,7 +161,7 @@ def printCard(request, epin):
     current_user = get_user(request)
     current_user = NewUserModel.objects.get(username=current_user.username)
     if not current_user.is_verified:
-        messages.error(request, 'Oops. You has\'nt verified your account yet. Please Enter a Valid Auth Key to Continue.')
+        messages.error(request, 'Oops. You haven\'t verified your account yet. Please Enter a Valid Auth Key to Continue.')
         return redirect('basicapp:verifyauth')
     else:
         global dict
