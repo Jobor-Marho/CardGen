@@ -41,7 +41,7 @@
                 
                 {% for data in dict.list %}
                     <div class="col-4 p-0 m-0 card-border">
-                        <div class="mtn-wrap recharge-card small-card w-100 bg-white p-3 me-0">
+                        <div class="mtn-wrap recharge-card small-card w-100 bg-white p-2 me-0">
                             <div class="mtn-content">
                                 <div class="my-card-header text-center">
                                     <span class="business-name fw-bold" style="font-size: 14px;">{{ current_user.businessname }} Recharge Card</span>
@@ -52,7 +52,7 @@
                                     <span class="ref text-center" style="font-size: 11px;">Ref </span>
                                     <span class="ref text-center" style="font-size: 11px;">{{ dict.ref }}</span>
                                     <span class="pin fw-bold text-center" style="font-size: 14px;">Pin</span>
-                                    <span class="pin fw-bold text-center" style="font-size: 16px;">{{ data.pin }}</span>
+                                    <span class="pin fw-bold" style="font-size: 15px;">{{ data.pin }}</span>
                                     <span class="serial text-center" style="font-size: 13px;">Serial No</span>
                                     <span class="serial text-center" style="font-size: 13px;">{{ data.serial }}</span>
                                 </div>
