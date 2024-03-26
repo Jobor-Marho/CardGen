@@ -34,7 +34,7 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarItem">
-              <ul class="navbar-nav rounded shadow">
+              <ul class="navbar-nav rounded-sm shadow-sm">
                 {% if user.is_authenticated %}
                   {% if current_user.is_verified %}
                     <li class="nav-item">
@@ -77,12 +77,12 @@
                 {% if message.tags == 'error' %}
 
                     <div class="message text-center alert alert-danger {{ message.tags }} alert-dismissible fade show" role="alert" id="error">
-                        <strong><i class="bi bi-exclamation-triangle-fill"></i> {{ message }}</strong>
+                        <strong class="p-3"><i class="bi bi-exclamation-triangle-fill"></i> {{ message }}</strong>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 {% else %}
                     <div class="message text-center alert alert-success {{ message.tags }} alert-dismissible fade show" role="alert">
-                      <strong><i class="bi bi-check-circle-fill"></i> {{ message }}</strong>
+                      <strong class="p-3"><i class="bi bi-check-circle-fill"></i> {{ message }}</strong>
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     
@@ -93,7 +93,7 @@
     </section>
 
     <section id="body">
-        <div class="container border border-default rounded shadow mx-auto">
+        <div class="container border border-default rounded shadow" id="container">
             {% block body %}
             {% endblock %}
         </div>

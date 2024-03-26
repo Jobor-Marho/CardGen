@@ -14,7 +14,7 @@ def genMtnEpin(msg:str, amount:int) -> list:
         compiled_data += [ {
             'pin': item,
             'serial': serial_list[sale_list.index(item)],
-            'code': '*131*PIN#'
+            'code': '*311*PIN#'
         }]
     return compiled_data
 
