@@ -70,7 +70,6 @@ def buidEpin(request):
                 
                 return redirect('basicapp:print', epin='true')
             elif request.POST.get('network') == 'glo':
-                print(str(request.POST.get('pin')))
                 compiled_data = genGloEpin(msg=str(request.POST.get('pin')), amount=int(request.POST.get('amount')))
                 ref = genref()
                 

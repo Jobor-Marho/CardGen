@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                    </div>
                     {% endfor %}
                 </div>
                 
@@ -72,54 +72,54 @@
         {% if dict.amount == 1000 or dict.amount == 500  %}
             <div class="grid-row-lg">
                 {% for data in dict.list %}
-                    <div class="col-6 p-0 m-0 card-border">
-                        <div class="glo-wrap recharge-card w-100 bg-white p-3 me-0">
-                            <div class="glo-content">
-                                <div class="my-card-header text-center">
-                                    <span class="business-name fw-bold">{{ current_user.businessname }} Recharge Card</span>
-                                    <span class="amount fw-bold" style="font-size: 16px;">GLO #{{ dict.amount }}</span>    
-                                </div>
-                                
-                                <div class="my-card-body ms-2 mt-2 mb-2">
-                                    <span class="ref text-center" style="font-size:16px;">Ref: {{ dict.ref }}</span>
-                                    <span class="pin fw-bold text-center" style="font-size: 16px;">Pin</span>
-                                    <span class="pin fw-bold text-center" style="font-size: 20px;">{{ data.pin }}</span>
-                                    <span class="serial text-center" style="font-size: 16px;">Serial No: {{ data.serial }}</span>
-                                </div>
-                                <div class="my-card-footer">
-                                    <span class="code text-center fw-bold" style="font-size: 16px;">Dial {{ data.code }}</span>
-                                </div>
+                <div class="card-border grid-col">
+                    <div class="glo-wrap recharge-card bg-white p-2">
+                        <div class="glo-content">
+                            <div class="my-card-header text-center">
+                                <span class="business-name fw-bold">{{ current_user.businessname }} Recharge Card</span>
+                                <span class="amount fw-bold" style="font-size: 16px;">GLO #{{ dict.amount }}</span>    
+                            </div>
+                            
+                            <div class="my-card-body ms-2 mt-2 mb-2">
+                                <span class="ref text-center" style="font-size:16px;">Ref: {{ dict.ref }}</span>
+                                <span class="pin fw-bold text-center" style="font-size: 16px;">Pin</span>
+                                <span class="pin fw-bold text-center" style="font-size: 20px;">{{ data.pin }}</span>
+                                <span class="serial text-center" style="font-size: 16px;">Serial No: {{ data.serial }}</span>
+                            </div>
+                            <div class="my-card-footer">
+                                <span class="code text-center fw-bold" style="font-size: 16px;">Dial {{ data.code }}</span>
                             </div>
                         </div>
                     </div>
+                </div>
                 {%  endfor %}
             </div>
         {% elif dict.amount == 100 or dict.amount == 200 %}
             <div class="grid-row-sm">
                 <!-- 200 n 100 -->
                 {% for data in dict.list %}
-                    <div class="col-4 p-0 m-0 card-border">
-                        <div class="glo-wrap recharge-card small-card w-100 bg-white p-3 me-0">
-                            <div class="glo-content">
-                                <div class="my-card-header text-center">
-                                    <span class="business-name fw-bold" style="font-size: 14px;">{{ current_user.businessname }} Recharge Card</span>
-                                    <span class="amount fw-bold" style="font-size: 16px;">GLO #{{ dict.amount }}</span>    
-                                </div>
-                                
-                                <div class="my-card-body">
-                                    <span class="ref text-center" style="font-size: 11px;">Ref </span>
-                                    <span class="ref text-center" style="font-size: 11px;">{{ dict.ref }}</span>
-                                    <span class="pin fw-bold text-center" style="font-size: 14px;">Pin</span>
-                                    <span class="pin fw-bold text-center" style="font-size: 16px;">{{ data.pin }}</span>
-                                    <span class="serial text-center" style="font-size: 13px;">Serial No</span>
-                                    <span class="serial text-center" style="font-size: 13px;">{{ data.serial }}</span>
-                                </div>
-                                <div class="my-card-footer">
-                                    <span class="code text-center fw-bold" style="font-size: 16px;">Dial {{ data.code }}</span>
-                                </div>
+                <div class="card-border grid-col-sm">
+                    <div class="glo-wrap recharge-card small-card w-100 bg-white p-2 me-0">
+                        <div class="glo-content">
+                            <div class="my-card-header text-center">
+                                <span class="business-name fw-bold" style="font-size: 14px;">{{ current_user.businessname }} Recharge Card</span>
+                                <span class="amount fw-bold" style="font-size: 16px;">GLO #{{ dict.amount }}</span>    
+                            </div>
+                            
+                            <div class="my-card-body">
+                                <span class="ref text-center" style="font-size: 11px;">Ref </span>
+                                <span class="ref text-center" style="font-size: 11px;">{{ dict.ref }}</span>
+                                <span class="pin fw-bold text-center" style="font-size: 14px;">Pin</span>
+                                <span class="pin fw-bold text-center" style="font-size: 16px;">{{ data.pin }}</span>
+                                <span class="serial text-center" style="font-size: 13px;">Serial No</span>
+                                <span class="serial text-center" style="font-size: 13px;">{{ data.serial }}</span>
+                            </div>
+                            <div class="my-card-footer">
+                                <span class="code text-center fw-bold" style="font-size: 16px;">Dial {{ data.code }}</span>
                             </div>
                         </div>
                     </div>
+                </div>
                 {% endfor %}
             </div>
         {% endif %}
