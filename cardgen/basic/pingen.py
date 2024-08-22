@@ -4,8 +4,8 @@ import random
 
 def genMtnEpin(msg:str, amount:int) -> list:
     msg_list = msg.split(' ')
-    sale_list = [msg_list[item+1] for item in range(0, len(msg_list)) if msg_list[item] =='Sale:']
-    serial_list = [msg_list[item+1] for item in range(0, len(msg_list)) if msg_list[item] =='Serial:']
+    sale_list = [msg_list[item+1] for item in range(0, len(msg_list)) if msg_list[item] =='airtime']
+    serial_list = [msg_list[item+2] for item in range(0, len(msg_list)) if msg_list[item] =='TRX']
     
 
 
@@ -17,7 +17,6 @@ def genMtnEpin(msg:str, amount:int) -> list:
             'code': '*311*PIN#'
         }]
     return compiled_data
-
 
 def genGloEpin(msg:str, amount:int) -> list:
     msg_list = msg.split(' ')
